@@ -24,13 +24,18 @@ public:
 };
 
 
-
 float SHAPES_RADIUS = 30;
 int WIGHT = 800;
 int HEIGHT = 800;
 
 float G = 9.8f;  // px на sec
-int dt = 1;  // Изменение времени в сек.
+float dt = 0.02;  // Изменение времени в сек.
+
+
+void sleep(float seconds) {
+    int milliseconds = (int)(seconds * 1000);
+    std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
+}
 
 
 int main() {
@@ -99,7 +104,7 @@ int main() {
             window.draw(item.draw_shape);
         }
 
-        std::this_thread::sleep_for(std::chrono::seconds(dt));
+        sleep(dt);
         window.display();
     }
 
